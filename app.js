@@ -11,6 +11,14 @@ $(".btn").on("click", function(event) {
     var city = $("#city").val().trim();
     var state = $("#state").val().trim();
     var zip = $("#zip").val().trim();
-    console.log(street, city, state, zip);
+
+    var address = (street + " " + city +  " " + state +  " " + zip)
+    $("#street").val("");
+    $("#city").val("");
+    $("#state").val("");
+    $("#zip").val("");
+
+
+    console.log(address);
 })
 
