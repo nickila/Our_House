@@ -50,6 +50,9 @@ var key = 'AIzaSyBA-3v7EkN8Hx_Fw2si5KDWgvJQtP54JKA'
         var city = response.pollingLocations[0].address.city;
         var state = response.pollingLocations[0].address.state;
         var zip = response.pollingLocations[0].address.zip;
+        var date = response.election.electionDay;
+        var time = response.pollingLocations[0].pollingHours;
+        date = moment(date).format("MMMM Do YYYY")
         //var info = JSON.stringify(results);
         //console.log(results);
         console.log(location, address, city, state, zip);
@@ -58,11 +61,10 @@ var key = 'AIzaSyBA-3v7EkN8Hx_Fw2si5KDWgvJQtP54JKA'
         var pollLocDiv = $("<h2>").append(location);
         var pollStreetDiv = $("<h2>").append(street);
         var pollAddDiv = $("<h2>").append(city + ", " + state + " &nbsp; " + zip);
-        
-        //var pollAddress = (pollLocDiv, pollAddDiv, pollCityDiv, pollStateDiv, pollZipDiv);
-        
-        
-        $("#poll-address").append(pollLocDiv, pollStreetDiv, pollAddDiv);
+        var dateDiv = $("<h3>").append(date + " from " + time);
+        dateDiv.addClass("highlight");
+        $("#poll-address").append(pollLocDiv, pollStreetDiv, pollAddDiv, "<br />", dateDiv);
+        console.log(response);
     });
 });
 
