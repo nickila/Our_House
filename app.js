@@ -52,7 +52,12 @@ var key = 'AIzaSyBA-3v7EkN8Hx_Fw2si5KDWgvJQtP54JKA'
         var zip = response.pollingLocations[0].address.zip;
         var date = response.election.electionDay;
         var time = response.pollingLocations[0].pollingHours;
-        date = moment(date).format("MMMM Do YYYY")
+        date = moment(date).format("MMMM Do YYYY");
+        //var map = response.pollingLocations.__proto__.map;
+        //var mapDiv = $("<div>").append(map);
+        console.log(response.pollingLocations.__proto__.map);
+        //console.log(response.pollingLocations.__proto__.map.arguments)
+
         //var info = JSON.stringify(results);
         //console.log(results);
         console.log(location, address, city, state, zip);
