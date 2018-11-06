@@ -18,10 +18,19 @@ $(".btn").on("click", function (event) {
     $("#city").val("");
     $("#state").val("");
     $("#zip").val("");
+    function initMap(address) {
+        // The location of adress (1890 Buford Ave, St. Paul, MN 55108, USA)
+        //var address = { lat: 45, lng: -93.180521 };
+        // The map, centered at address
+        var map = new google.maps.Map(
+            document.getElementById('poll-map'), { zoom: 18, center: address });
+        // The marker, positioned at address
+        var marker = new google.maps.Marker({ position: address, map: map });
+    
 
-
-    console.log(address);
-    var key = 'AIzaSyBA-3v7EkN8Hx_Fw2si5KDWgvJQtP54JKA'
+    console.log("poll place " + address);
+}
+    var key = 'AIzaSyCZ9gE6d7ErOm-7IfFV-eHZqk5L0VQ1PJ4'
     // curl "https://www.googleapis.com/civicinfo/v2/voterinfo?key=<YOUR_API_KEY>&address=1263%20Pacific%20Ave.%20Kansas%20City%20KS&electionId=2000"
 
     console.log(address);
@@ -49,15 +58,17 @@ $(".btn").on("click", function (event) {
         dateDiv.addClass("highlight");
         $("#poll-address").append(pollLocDiv, pollStreetDiv, pollAddDiv, "<br />", dateDiv);
         console.log(response);
-        address = (location, address, city, state, zip);
-        var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyCZ9gE6d7ErOm-7IfFV-eHZqk5L0VQ1PJ4"
+        var mapAddress = (street + city + state + zip);
+        var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + mapAddress + "&key=AIzaSyDSt2GC8tAx5o4zox7mVX7Kne_fTD3ekLA";
         // queryURL with $ajax, then taking the response data and displaying it in the div with an id of address-view
+        console.log("map address " + mapAddress);
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            $("#address-view").text(JSON.stringify(response));
-            console.log("map stuff" + response);
+            //$("#address-view").text(JSON.stringify(response));
+            initMap(response.results[0].geometry.location);
+
         });
 
 
@@ -72,15 +83,7 @@ $(".btn").on("click", function (event) {
 
 
 });
-// function initMap() {
-//     // The location of adress (1890 Buford Ave, St. Paul, MN 55108, USA)
-//     var address = { lat: 45, lng: -93.180521 };
-//     // The map, centered at address
-//     var map = new google.maps.Map(
-//         document.getElementById('poll-map'), { zoom: 18, center: address });
-//     // The marker, positioned at address
-//     var marker = new google.maps.Marker({ position: address, map: map });
-// }
+
 
 //   var geocode = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + geoApiKey
 // This .on("click") function will trigger the AJAX Call
