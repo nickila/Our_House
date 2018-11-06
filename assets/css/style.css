@@ -1,3 +1,7 @@
 .highlight {
     color: blue;
 }
+#poll-map {
+    height: 400px;
+    width: 100%;
+   }
