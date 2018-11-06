@@ -1,3 +1,8 @@
+body{
+    background-color: rgb(73, 173, 255);
+    color: white;
+}
+
 .highlight {
     color: blue;
 }

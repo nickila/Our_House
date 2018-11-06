@@ -19,8 +19,7 @@ $(".btn").on("click", function (event) {
     $("#state").val("");
     $("#zip").val("");
     function initMap(address) {
-        // The location of adress (1890 Buford Ave, St. Paul, MN 55108, USA)
-        //var address = { lat: 45, lng: -93.180521 };
+        
         // The map, centered at address
         var map = new google.maps.Map(
             document.getElementById('poll-map'), { zoom: 18, center: address });
@@ -56,9 +55,10 @@ $(".btn").on("click", function (event) {
         var pollAddDiv = $("<h2>").append(city + ", " + state + " &nbsp; " + zip);
         var dateDiv = $("<h3>").append(date + " from " + time);
         dateDiv.addClass("highlight");
-        $("#poll-address").append(pollLocDiv, pollStreetDiv, pollAddDiv, "<br />", dateDiv);
+        $("#poll-address").append(pollLocDiv, pollStreetDiv, pollAddDiv, dateDiv);
+        $("#poll-address").addClass("animated bounceInDown");
         console.log(response);
-        var mapAddress = (street + city + state + zip);
+        var mapAddress = (street + " " + city + " " + state + " " + zip);
         var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + mapAddress + "&key=AIzaSyDSt2GC8tAx5o4zox7mVX7Kne_fTD3ekLA";
         // queryURL with $ajax, then taking the response data and displaying it in the div with an id of address-view
         console.log("map address " + mapAddress);
@@ -66,7 +66,6 @@ $(".btn").on("click", function (event) {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            //$("#address-view").text(JSON.stringify(response));
             initMap(response.results[0].geometry.location);
 
         });
