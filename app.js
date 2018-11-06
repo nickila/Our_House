@@ -5,46 +5,40 @@
 // var zip;
 
 
-$(".btn").on("click", function(event) {
+$(".btn").on("click", function (event) {
+
     event.preventDefault();
     var street = $("#street").val().trim();
     var city = $("#city").val().trim();
     var state = $("#state").val().trim();
     var zip = $("#zip").val().trim();
 
-    var address = (street + " " + city +  " " + state +  " " + zip)
+    var address = (street + " " + city + " " + state + " " + zip)
     $("#street").val("");
     $("#city").val("");
     $("#state").val("");
     $("#zip").val("");
+    function initMap(address) {
+        // The location of adress (1890 Buford Ave, St. Paul, MN 55108, USA)
+        //var address = { lat: 45, lng: -93.180521 };
+        // The map, centered at address
+        var map = new google.maps.Map(
+            document.getElementById('poll-map'), { zoom: 18, center: address });
+        // The marker, positioned at address
+        var marker = new google.maps.Marker({ position: address, map: map });
+    
 
+    console.log("poll place " + address);
+}
+    var key = 'AIzaSyCZ9gE6d7ErOm-7IfFV-eHZqk5L0VQ1PJ4'
+    // curl "https://www.googleapis.com/civicinfo/v2/voterinfo?key=<YOUR_API_KEY>&address=1263%20Pacific%20Ave.%20Kansas%20City%20KS&electionId=2000"
 
-    console.log(address);
-
-
-// var mainDiv = document.createElement('div');
-// var form = document.createElement('input');
-//     $(form).attr('id', 'searchBox');
-//     $(form).attr('type', 'text');
-//     $(form).attr('placeholder', 'searchBox')
-// var button = document.createElement('button');
-//     $(button).attr('id', 'searchBtn');
-//     $(button).attr('class', 'btn btn-md btn-danger');
-//     $(button).text('SEARCH!!')
-//     $(form).appendTo(mainDiv);
-//     $(button).appendTo(mainDiv);
-//     $(mainDiv).appendTo('body');
-var key = 'AIzaSyBA-3v7EkN8Hx_Fw2si5KDWgvJQtP54JKA'
-// curl "https://www.googleapis.com/civicinfo/v2/voterinfo?key=<YOUR_API_KEY>&address=1263%20Pacific%20Ave.%20Kansas%20City%20KS&electionId=2000"
-
-// $(".btn").on('click', function(){
-    //address = address.replace(/[,]+/g, '%2C');
     console.log(address);
     var civicAPI = 'https://www.googleapis.com/civicinfo/v2/voterinfo?address=' + address + '&key=' + key;
     $.ajax({
         url: civicAPI,
         method: 'GET'
-    }).then(function(response){
+    }).then(function (response) {
         var location = response.pollingLocations[0].address.locationName;
         var street = response.pollingLocations[0].address.line1;
         var city = response.pollingLocations[0].address.city;
@@ -53,13 +47,7 @@ var key = 'AIzaSyBA-3v7EkN8Hx_Fw2si5KDWgvJQtP54JKA'
         var date = response.election.electionDay;
         var time = response.pollingLocations[0].pollingHours;
         date = moment(date).format("MMMM Do YYYY");
-        //var map = response.pollingLocations.__proto__.map;
-        //var mapDiv = $("<div>").append(map);
-        console.log(response.pollingLocations.__proto__.map);
-        //console.log(response.pollingLocations.__proto__.map.arguments)
-
-        //var info = JSON.stringify(results);
-        //console.log(results);
+    
         console.log(location, address, city, state, zip);
         //var pollAddress = info.pollingLocations; 
         //console.log(info);
@@ -70,11 +58,50 @@ var key = 'AIzaSyBA-3v7EkN8Hx_Fw2si5KDWgvJQtP54JKA'
         dateDiv.addClass("highlight");
         $("#poll-address").append(pollLocDiv, pollStreetDiv, pollAddDiv, "<br />", dateDiv);
         console.log(response);
+        var mapAddress = (street + city + state + zip);
+        var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + mapAddress + "&key=AIzaSyDSt2GC8tAx5o4zox7mVX7Kne_fTD3ekLA";
+        // queryURL with $ajax, then taking the response data and displaying it in the div with an id of address-view
+        console.log("map address " + mapAddress);
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            //$("#address-view").text(JSON.stringify(response));
+            initMap(response.results[0].geometry.location);
+
+        });
+
+
+        // Here we get the address from the input box
+        //var address = $("#address-input").val();
+        // Constructing our URL
+        //console.log('address: ' + address)
+        
     });
+
+
+
+
 });
 
 
-
+//   var geocode = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + geoApiKey
+// This .on("click") function will trigger the AJAX Call
+// $("#find-address").on("click", function (event) {
+//     event.preventDefault();
+//     // Here we get the address from the input box
+//     var address = $("#address-input").val();
+//     // Constructing our URL
+//     console.log('address: ' + address)
+//     var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyCZ9gE6d7ErOm-7IfFV-eHZqk5L0VQ1PJ4"
+//     // queryURL with $ajax, then taking the response data and displaying it in the div with an id of address-view
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//     }).then(function (response) {
+//         $("#address-view").text(JSON.stringify(response));
+//     });
+// });
 
 
 
