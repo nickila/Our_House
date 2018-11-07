@@ -39,12 +39,34 @@ $(".btn").on("click", function (event) {
         url: civicAPI,
         method: 'GET'
     }).then(function (response) {
-        console.log(response.offices[0].name);
-        console.log(response);
-        var title = response.offices[0].name
-        var name = response.officials[0].name;
-        var party = response.officials[0].party;
-        var phone = response.officials[0].phones;
+        // var title = response.offices[0].name
+        // var name = response.officials[0].name;
+        // var party = response.officials[0].party;
+        // var phone = response.officials[0].phones;
+
+        for (i = 0; i < response.offices.length; i++) {
+            var repDiv = $("<div>");
+            var repDivTitle = $("<h3>").append(response.offices[i].name);
+            
+            if (i < 2) {
+            var repInfoDiv = $("<p>").append(response.officials[i].name + ", " + response.officials[i].party + " " + response.officials[i].phones);
+            } else if (i == 2) {
+                var repInfoDiv = $("<p>").append(response.officials[i].name  + ", " + response.officials[i].party + " " + response.officials[i].phones + "<br />" + 
+                response.officials[i+1].name  + ", " + response.officials[i+1].party + " " + response.officials[i+1].phones);
+            } else {
+                var repInfoDiv = $("<p>").append(response.officials[i+1].name  + ", " + response.officials[i+1].party + " " + response.officials[i+1].phones);
+            }
+            repDiv.append(repDivTitle);
+            repDiv.addClass("title");
+            repInfoDiv.addClass("info");
+            repDiv.append(repInfoDiv);
+            $("#representatives").append(repDiv);
+            $("#representatives").addClass("animated bounceInDown");
+        }
+        //$("<h4>").on("click", this)
+       
+
+
         // var address = response.pollingLocations[0].address.state;
         // var email = response.pollingLocations[0].address.zip;
         // var date = response.election.electionDay;
@@ -53,15 +75,15 @@ $(".btn").on("click", function (event) {
 
         // console.log(location, address, city, state, zip);
 
-        var titleDiv = $("<h2>").append(title);
-        var nameDiv = $("<h2>").append(name);
-        var partyDiv = $("<h2>").append(party);
-        var phoneDiv = $("<h3>").append(phone);
-        var repDiv = $("<div>").append(titleDiv, nameDiv, partyDiv, phoneDiv);
-        // repDiv.addClass("col-8");
-        $("#poll-address").append(repDiv);
-        $("#poll-address").addClass("animated bounceInDown");
-        console.log(response);
+        // var titleDiv = $("<h2>").append(title);
+        // var nameDiv = $("<h2>").append(name);
+        // var partyDiv = $("<h2>").append(party);
+        // var phoneDiv = $("<h3>").append(phone);
+        // var repDiv = $("<div>").append(titleDiv, nameDiv, partyDiv, phoneDiv);
+        // // repDiv.addClass("col-8");
+        // $("#poll-address").append(repDiv);
+        // $("#poll-address").addClass("animated bounceInDown");
+        // console.log(response);
         // var mapAddress = (street + " " + city + " " + state + " " + zip);
         // var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + mapAddress + "&key=AIzaSyDSt2GC8tAx5o4zox7mVX7Kne_fTD3ekLA";
         // // queryURL with $ajax, then taking the response data and displaying it in the div with an id of address-view

@@ -3,9 +3,6 @@ body{
     color: white;
 }
 
-.highlight {
-    color: blue;
-}
 #poll-map {
     /* height: 400px; */
     width: 100%;
@@ -13,4 +10,16 @@ body{
 h1 {
     font-size: 12rem;
     text-align: center;
+}
+
+.info {
+    font-size: 1.75em;
+    margin-bottom: 30px;
+}
+h3 {
+    color: darkblue;
+    margin-bottom: 0;
+}
+.title {
+    font-size: 1em;
 }
