@@ -19,63 +19,67 @@ $(".btn").on("click", function (event) {
     $("#state").val("");
     $("#zip").val("");
     function initMap(address) {
-        
+
         // The map, centered at address
         var map = new google.maps.Map(
             document.getElementById('poll-map'), { zoom: 18, center: address });
         // The marker, positioned at address
         var marker = new google.maps.Marker({ position: address, map: map });
-    
+        document.getElementById("poll-map").style.height = "400px";
+        $("#poll-map").addClass("animated bounceInDown");
 
-    console.log("poll place " + address);
-}
+        console.log("poll place " + address);
+    }
     var key = 'AIzaSyCZ9gE6d7ErOm-7IfFV-eHZqk5L0VQ1PJ4'
     // curl "https://www.googleapis.com/civicinfo/v2/voterinfo?key=<YOUR_API_KEY>&address=1263%20Pacific%20Ave.%20Kansas%20City%20KS&electionId=2000"
 
     console.log(address);
-    var civicAPI = 'https://www.googleapis.com/civicinfo/v2/voterinfo?address=' + address + '&key=' + key;
+    var civicAPI = 'https://www.googleapis.com/civicinfo/v2/representatives?address=' + address + '&key=' + key;
     $.ajax({
         url: civicAPI,
         method: 'GET'
     }).then(function (response) {
-        var location = response.pollingLocations[0].address.locationName;
-        var street = response.pollingLocations[0].address.line1;
-        var city = response.pollingLocations[0].address.city;
-        var state = response.pollingLocations[0].address.state;
-        var zip = response.pollingLocations[0].address.zip;
-        var date = response.election.electionDay;
-        var time = response.pollingLocations[0].pollingHours;
-        date = moment(date).format("MMMM Do YYYY");
-    
-        console.log(location, address, city, state, zip);
-        //var pollAddress = info.pollingLocations; 
-        //console.log(info);
-        var pollLocDiv = $("<h2>").append(location);
-        var pollStreetDiv = $("<h2>").append(street);
-        var pollAddDiv = $("<h2>").append(city + ", " + state + " &nbsp; " + zip);
-        var dateDiv = $("<h3>").append(date + " from " + time);
-        dateDiv.addClass("highlight");
-        $("#poll-address").append(pollLocDiv, pollStreetDiv, pollAddDiv, dateDiv);
+        console.log(response.offices[0].name);
+        console.log(response);
+        var title = response.offices[0].name
+        var name = response.officials[0].name;
+        var party = response.officials[0].party;
+        var phone = response.officials[0].phones;
+        // var address = response.pollingLocations[0].address.state;
+        // var email = response.pollingLocations[0].address.zip;
+        // var date = response.election.electionDay;
+        // var time = response.pollingLocations[0].pollingHours;
+        // date = moment(date).format("MMMM Do YYYY");
+
+        // console.log(location, address, city, state, zip);
+
+        var titleDiv = $("<h2>").append(title);
+        var nameDiv = $("<h2>").append(name);
+        var partyDiv = $("<h2>").append(party);
+        var phoneDiv = $("<h3>").append(phone);
+        var repDiv = $("<div>").append(titleDiv, nameDiv, partyDiv, phoneDiv);
+        // repDiv.addClass("col-8");
+        $("#poll-address").append(repDiv);
         $("#poll-address").addClass("animated bounceInDown");
         console.log(response);
-        var mapAddress = (street + " " + city + " " + state + " " + zip);
-        var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + mapAddress + "&key=AIzaSyDSt2GC8tAx5o4zox7mVX7Kne_fTD3ekLA";
-        // queryURL with $ajax, then taking the response data and displaying it in the div with an id of address-view
-        console.log("map address " + mapAddress);
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function (response) {
-            initMap(response.results[0].geometry.location);
+        // var mapAddress = (street + " " + city + " " + state + " " + zip);
+        // var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + mapAddress + "&key=AIzaSyDSt2GC8tAx5o4zox7mVX7Kne_fTD3ekLA";
+        // // queryURL with $ajax, then taking the response data and displaying it in the div with an id of address-view
+        // console.log("map address " + mapAddress);
+        // $.ajax({
+        //     url: queryURL,
+        //     method: "GET"
+        // }).then(function (response) {
+        //     initMap(response.results[0].geometry.location);
 
-        });
+        // });
 
 
         // Here we get the address from the input box
         //var address = $("#address-input").val();
         // Constructing our URL
         //console.log('address: ' + address)
-        
+
     });
 
 

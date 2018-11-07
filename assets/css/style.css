@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(73, 173, 255);
+    background-color: rgb(106, 183, 247);
     color: white;
 }
 
@@ -7,6 +7,10 @@ body{
     color: blue;
 }
 #poll-map {
-    height: 400px;
+    /* height: 400px; */
     width: 100%;
-   }
+}
+h1 {
+    font-size: 12rem;
+    text-align: center;
+}
