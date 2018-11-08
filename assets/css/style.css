@@ -15,11 +15,21 @@ h1 {
 .info {
     font-size: 1.75em;
     margin-bottom: 30px;
+    display: none;
 }
 h3 {
-    color: darkblue;
+    color: white;
     margin-bottom: 0;
 }
-.title {
+.repDiv {
     font-size: 1em;
+}
+.hide {
+    display: none;
+}
+.show {
+    display: inline;
+}
+.rep {
+    margin-bottom: 40px;
 }

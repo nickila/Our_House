@@ -8,6 +8,7 @@
 $(".btn").on("click", function (event) {
 
     event.preventDefault();
+    $("#representatives").empty();
     var street = $("#street").val().trim();
     var city = $("#city").val().trim();
     var state = $("#state").val().trim();
@@ -43,29 +44,57 @@ $(".btn").on("click", function (event) {
         // var name = response.officials[0].name;
         // var party = response.officials[0].party;
         // var phone = response.officials[0].phones;
-
+        console.log(response);
+        //officials[0].address[0].city
         for (i = 0; i < response.offices.length; i++) {
-            var repDiv = $("<div>");
+            var repDiv = $('<div>');
             var repDivTitle = $("<h3>").append(response.offices[i].name);
-            
+            var repName = response.officials[i].name;
+            var repParty = response.officials[i].party;
+            var repPhone = response.officials[i].phones;
+            var repAddress = (response.officials[i].address[0].line1, response.officials[i].address[0].line2, response.officials[i].address[0].city, response.officials[i].address[0].state, response.officials[i].address[0].zip);
+            var repName2 = response.officials[i + 1].name;
+            var repParty2 = response.officials[i + 1].party;
+            var repPhone2 = response.officials[i + 1].phones;
+            var repAddress2 = (response.officials[i + 1].address[0].line1, response.officials[i + 1].address[0].line2, response.officials[i + 1].address[0].city, response.officials[i + 1].address[0].state, response.officials[i + 1].address[0].zip);
             if (i < 2) {
-            var repInfoDiv = $("<p>").append(response.officials[i].name + ", " + response.officials[i].party + " " + response.officials[i].phones);
+                var repNameDiv = $("<p>").append(repName);
+                var repPartyDiv = $("<p>").append(repParty);
+                var repPhoneDiv = $("<p>").append(repPhone);
+                var repAddressDiv = $("<p>").append(repAddress);
+                //var repName = $("<h3>").append(response.officials[i].name);
             } else if (i == 2) {
-                var repInfoDiv = $("<p>").append(response.officials[i].name  + ", " + response.officials[i].party + " " + response.officials[i].phones + "<br />" + 
-                response.officials[i+1].name  + ", " + response.officials[i+1].party + " " + response.officials[i+1].phones);
+                var repNameDiv = $("<p>").append(repName);
+                var repPartyDiv = $("<p>").append(repParty);
+                var repPhoneDiv = $("<p>").append(repPhone);
+                var repAddressDiv = $("<p>").append(repAddress);
+                var repNameDiv = $("<p>").append(repName2);
+                var repPartyDiv = $("<p>").append(repParty2);
+                var repPhoneDiv = $("<p>").append(repPhone2);
+                var repAddressDiv = $("<p>").append(repAddress2);
+                //var repName = $("<h3>").append(response.officials[i].name + "<br />" + response.officials[i + 1].name);
             } else {
-                var repInfoDiv = $("<p>").append(response.officials[i+1].name  + ", " + response.officials[i+1].party + " " + response.officials[i+1].phones);
+                var repNameDiv = $("<p>").append(repName2);
+                var repPartyDiv = $("<p>").append(repParty2);
+                var repPhoneDiv = $("<p>").append(repPhone2);
+                var repAddressDiv = $("<p>").append(repAddress2);
             }
             repDiv.append(repDivTitle);
-            repDiv.addClass("title");
+            repDiv.addClass("rep");
             repInfoDiv.addClass("info");
+            // repInfoDiv.attr("data-state", "hide");
+            // repInfoDiv.addClass('hide');
             repDiv.append(repInfoDiv);
             $("#representatives").append(repDiv);
-            $("#representatives").addClass("animated bounceInDown");
+            //$("#representatives").addClass("animated bounceInDown");
         }
-        //$("<h4>").on("click", this)
-       
 
+
+        $(".rep").unbind();
+        $(".rep").on("click", function () {
+            console.log($(this).children(".info"))
+            $(this).children(".info").toggleClass('show')
+        });
 
         // var address = response.pollingLocations[0].address.state;
         // var email = response.pollingLocations[0].address.zip;
