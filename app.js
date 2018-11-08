@@ -3,6 +3,7 @@
 // var city;
 // var state;
 // var zip;
+
 var config = {
     apiKey: "AIzaSyDNXjUQnKfu8hdcgqie-p00TE7smKb1Vcc",
     authDomain: "polling-place-info.firebaseapp.com",
@@ -95,6 +96,7 @@ var buttonMaker = function(){
     }
 
 };
+
 $(".btn").on("click", function (event) {
 
     event.preventDefault();
@@ -108,9 +110,12 @@ $(".btn").on("click", function (event) {
     $("#city").val("");
     $("#state").val("");
     $("#zip").val("");
+
     //save address to firebase
     // database.ref(userId).update
     arrayizer(address);
+
+
     function initMap(address) {
 
         // The map, centered at address

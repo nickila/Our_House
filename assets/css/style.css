@@ -2,10 +2,12 @@ body{
     background-color: rgb(106, 183, 247);
     color: white;
 }
+
 .recall-button{
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 #poll-map {
     /* height: 400px; */
     width: 100%;
