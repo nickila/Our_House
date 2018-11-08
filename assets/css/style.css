@@ -11,10 +11,13 @@ h1 {
     font-size: 12rem;
     text-align: center;
 }
+p {
+    margin-bottom: 0;
+}
 
 .info {
-    font-size: 1.75em;
-    margin-bottom: 30px;
+    font-size: 1em;
+    color: darkblue;
     display: none;
 }
 h3 {
