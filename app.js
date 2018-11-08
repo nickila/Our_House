@@ -20,19 +20,9 @@ $(document).ready(function(){
     idChecker();
 });
 
-//Helps to find userId cookie
-// function getCookie(key) {
-//     var regexp = new RegExp(`.*${key}=([^;]*)`);
-//     var result = regexp.exec(document.cookie);
-//     if(result) {
-//       return result [1];
-//     }
-//   }
-
   var idChecker = function(){
     //check localStorage for previously saved 'userId'
     userId = window.localStorage.getItem('userId');
-    console.log('localStorage.userId: ' + userId);
     if (userId == undefined){
         userIdGenerator();
         window.localStorage.setItem('counter', counter);
@@ -60,7 +50,6 @@ function userIdGenerator(){
     database.ref(userId).set({
         userId: userId,
     });
-    console.log(userId);
     window.localStorage.setItem('userId', userId);
     // window.localStorage.setItem('userId', userId.replace(/['"]+/g, ''));
 };
@@ -69,17 +58,10 @@ var arrayizer = function(address){
     arrayLocation.once('value', function(snap){
         var arrayOriginal = snap;
         var arrayVal = arrayOriginal.val();
-        console.log('arrayOriginal: ' + JSON.stringify(arrayOriginal));
-        console.log('arrayVal: ' + arrayVal)
         if(counter == undefined){
-            console.log('no previously stored addresses');
-            // arrayOriginal.remove();
             arrayLocation.child('0').set(address);
             counter = 0;
             window.localStorage.counter = counter;
-            console.log('arrayOriginal again: ' + JSON.stringify(arrayOriginal));
-            console.log('arrayVal again: ' + arrayVal)
-            console.log('First time counter: ' + counter)
             buttonMaker();
             // window.localStorage.counter++;
             // counter = window.localStorage.counter;
@@ -87,13 +69,9 @@ var arrayizer = function(address){
             
         }
         else if(counter != undefined){
-            console.log('there are values stored!')
-            var stringData = JSON.stringify(arrayVal);
-            console.log('stringData: ' + stringData);
             counter++;
             window.localStorage.counter = counter
             var newArray = arrayLocation.child(counter).set(address);
-            console.log('newArray: ' + newArray);
             $('#buttonDiv').empty()
             buttonMaker();
         }
@@ -109,7 +87,6 @@ var buttonMaker = function(){
         var db = database.ref('/' + userId + '/addresses').child(i);
         db.on('value', function(snap){
             var adrText = snap.val()
-            console.log('adrText: ' + JSON.stringify(adrText));
             $(button).text(adrText);
             $(button).attr('class', 'recall-button btn btn-sm btn-outline-light');
             $(button).appendTo(buttonDiv);
