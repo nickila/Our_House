@@ -52,7 +52,6 @@ $(".btn").on("click", function (event) {
             var repParty = response.officials[i].party;
             var repPhone = response.officials[i].phones;
             var repAddress = ((response.officials[i].address[0].line1) + "<br />" + 
-            (response.officials[i].address[0].line2) + "<br />" +
             (response.officials[i].address[0].city) + ", " +
             (response.officials[i].address[0].state) + " &nbsp;" +
             (response.officials[i].address[0].zip));
@@ -99,31 +98,22 @@ $(".btn").on("click", function (event) {
                 repDiv.append(repDivTitle);
                 repDiv.addClass("rep");
                 repInfoDiv.addClass("info");
-                
-                // repInfoDiv.attr("data-state", "hide");
-                // repInfoDiv.addClass('hide');
                 repDiv.append(repInfoDiv);
                 $("#representatives").append(repDiv);
-            } else {
+            } else if (i > 2) {
                 var repDiv = $('<div>');
                 var repDivTitle = $("<h3>").append(response.offices[i].name);
                 var repNameDiv = $("<p>").append(repName2);
                 var repPartyDiv = $("<p>").append(repParty2);
                 var repPhoneDiv = $("<p>").append(repPhone2);
                 var repAddressDiv = $("<p>").append(repAddress2);
-                var repInfoDiv = $("<div>").append(repName2, repPartyDiv2, repPhoneDiv2, repAddressDiv2);
+                var repInfoDiv = $("<div>").append(repNameDiv, repPartyDiv, repPhoneDiv, repAddressDiv);
                 repDiv.append(repDivTitle);
             repDiv.addClass("rep");
             repInfoDiv.addClass("info");
-            
-            // repInfoDiv.attr("data-state" + "hide");
-            // repInfoDiv.addClass('hide');
             repDiv.append(repInfoDiv);
             $("#representatives").append(repDiv);
             }
-            console.log(repParty2);
-            
-            //$("#representatives").addClass("animated bounceInDown");
         }
 
 
