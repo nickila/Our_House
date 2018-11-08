@@ -4,6 +4,98 @@
 // var state;
 // var zip;
 
+var config = {
+    apiKey: "AIzaSyDNXjUQnKfu8hdcgqie-p00TE7smKb1Vcc",
+    authDomain: "polling-place-info.firebaseapp.com",
+    databaseURL: "https://polling-place-info.firebaseio.com",
+    projectId: "polling-place-info",
+    storageBucket: "polling-place-info.appspot.com",
+    messagingSenderId: "258816478675"
+};
+    firebase.initializeApp(config);
+var database = firebase.database();
+var address;
+var userId;
+var counter;
+$(document).ready(function(){
+    idChecker();
+});
+
+  var idChecker = function(){
+    //check localStorage for previously saved 'userId'
+    userId = window.localStorage.getItem('userId');
+    if (userId == undefined){
+        userIdGenerator();
+        window.localStorage.setItem('counter', counter);
+    } 
+    else{
+        console.log('welcome back #' + userId);
+        counter = window.localStorage.counter;
+        }
+};
+
+//Generates unique 10 digit number for user for firebase reference
+function userIdGenerator(){
+    var pt1 = Math.floor((Math.random() * 9 ) + 1);
+    var pt2 = Math.floor((Math.random() * 9 ) + 1);
+    var pt3 = Math.floor((Math.random() * 9 ) + 1);
+    var pt4 = Math.floor((Math.random() * 9 ) + 1);
+    var pt5 = Math.floor((Math.random() * 9 ) + 1);
+    var pt6 = Math.floor((Math.random() * 9 ) + 1);
+    var pt7 = Math.floor((Math.random() * 9 ) + 1);
+    var pt8 = Math.floor((Math.random() * 9 ) + 1);
+    var pt9 = Math.floor((Math.random() * 9 ) + 1);
+    var pt0 = Math.floor((Math.random() * 9 ) + 1);
+    var userIdAssembled = "'" + pt1 + pt2 + pt3 + pt4 + pt5 + pt6 + pt7 + pt8 + pt9 + pt0 + "'";
+    userId = userIdAssembled.replace(/['"]+/g, '');
+    database.ref(userId).set({
+        userId: userId,
+    });
+    window.localStorage.setItem('userId', userId);
+    // window.localStorage.setItem('userId', userId.replace(/['"]+/g, ''));
+};
+var arrayizer = function(address){
+    arrayLocation = database.ref('/' + userId + '/addresses');
+    arrayLocation.once('value', function(snap){
+        var arrayOriginal = snap;
+        var arrayVal = arrayOriginal.val();
+        if(counter == undefined){
+            arrayLocation.child('0').set(address);
+            counter = 0;
+            window.localStorage.counter = counter;
+            buttonMaker();
+            // window.localStorage.counter++;
+            // counter = window.localStorage.counter;
+
+            
+        }
+        else if(counter != undefined){
+            counter++;
+            window.localStorage.counter = counter
+            var newArray = arrayLocation.child(counter).set(address);
+            $('#buttonDiv').empty()
+            buttonMaker();
+        }
+    });
+};
+var buttonMaker = function(){
+    var buttonDiv = document.createElement('div');
+    $(buttonDiv).attr('id', 'buttonDiv');
+    $('.needs-validation').prepend(buttonDiv)
+    for( var i = 0; i <= counter; i++){
+        var button = document.createElement('button');
+        var lineBreak = '<br>'
+        var db = database.ref('/' + userId + '/addresses').child(i);
+        db.on('value', function(snap){
+            var adrText = snap.val()
+            $(button).text(adrText);
+            $(button).attr('class', 'recall-button btn btn-sm btn-outline-light');
+            $(button).appendTo(buttonDiv);
+            $(lineBreak).appendTo(buttonDiv)
+        })
+    }
+
+};
 
 $(".btn").on("click", function (event) {
 
@@ -18,6 +110,12 @@ $(".btn").on("click", function (event) {
     $("#city").val("");
     $("#state").val("");
     $("#zip").val("");
+
+    //save address to firebase
+    // database.ref(userId).update
+    arrayizer(address);
+
+
     function initMap(address) {
 
         // The map, centered at address
