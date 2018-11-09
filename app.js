@@ -47,36 +47,45 @@ $(".btn").on("click", function (event) {
         console.log(response);
         //officials[0].address[0].city
         for (i = 0; i < response.offices.length; i++) {
-            
+
             var repName = response.officials[i].name;
             var repParty = response.officials[i].party;
             var repPhone = response.officials[i].phones;
-            var repAddress = ((response.officials[i].address[0].line1) + "<br />" + 
-            (response.officials[i].address[0].city) + ", " +
-            (response.officials[i].address[0].state) + " &nbsp;" +
-            (response.officials[i].address[0].zip));
+            var repAddress = ((response.officials[i].address[0].line1) + "<br />" +
+                (response.officials[i].address[0].city) + ", " +
+                (response.officials[i].address[0].state) + " &nbsp;" +
+                (response.officials[i].address[0].zip));
             var repName2 = response.officials[i + 1].name;
             var repParty2 = response.officials[i + 1].party;
             var repPhone2 = response.officials[i + 1].phones;
-            var repAddress2 = ((response.officials[i + 1].address[0].line1) + "<br />" + 
-            (response.officials[i + 1].address[0].line2) + "<br />" + 
-            (response.officials[i + 1].address[0].city) + ", " + 
-            (response.officials[i + 1].address[0].state) + " &nbsp;" + 
-            (response.officials[i + 1].address[0].zip));
-            
+            var repAddress2 = ((response.officials[i].address[0].line1) + "<br />" +
+                (response.officials[i].address[0].line2) + "<br />" +
+                (response.officials[i].address[0].city) + ", " +
+                (response.officials[i].address[0].state) + " &nbsp;" +
+                (response.officials[i].address[0].zip));
+            var repAddress3 = ((response.officials[i + 1].address[0].line1) + "<br />" +
+                (response.officials[i + 1].address[0].line2) + "<br />" +
+                (response.officials[i + 1].address[0].city) + ", " +
+                (response.officials[i + 1].address[0].state) + " &nbsp;" +
+                (response.officials[i + 1].address[0].zip));
+            var repAddress4 = ((response.officials[i + 1].address[0].line1) + "<br />" +
+                (response.officials[i + 1].address[0].city) + ", " +
+                (response.officials[i + 1].address[0].state) + " &nbsp;" +
+                (response.officials[i + 1].address[0].zip));
+
             if (i < 2) {
                 var repDiv = $('<div>');
                 var repDivTitle = $("<h3>").append(response.offices[i].name);
                 var repNameDiv = $("<p>").append(repName);
                 var repPartyDiv = $("<p>").append(repParty);
                 var repPhoneDiv = $("<p>").append(repPhone);
-                var repAddressDiv = $("<p>").append(repAddress);
+                var repAddressDiv = $("<p>").append(repAddress2);
                 var repInfoDiv = $("<div>").append(repNameDiv, repPartyDiv, repPhoneDiv, repAddressDiv);
                 //var repName = $("<h3>").append(response.officials[i].name);
                 repDiv.append(repDivTitle);
                 repDiv.addClass("rep");
                 repInfoDiv.addClass("info");
-                
+
                 // repInfoDiv.attr("data-state", "hide");
                 // repInfoDiv.addClass('hide');
                 repDiv.append(repInfoDiv);
@@ -87,12 +96,20 @@ $(".btn").on("click", function (event) {
                 var repNameDiv = $("<p>").append(repName);
                 var repPartyDiv = $("<p>").append(repParty);
                 var repPhoneDiv = $("<p>").append(repPhone);
-                var repAddressDiv = $("<p>").append(repAddress);
+                if (response.officials[i].address[0].line2) {
+                    var repAddressDiv = $("<p>").append(repAddress2);
+                } else {
+                    var repAddressDiv = $("<p>").append(repAddress);
+                }
                 var repNameDiv2 = $("<p>").append(repName2);
                 var repPartyDiv2 = $("<p>").append(repParty2);
                 var repPhoneDiv2 = $("<p>").append(repPhone2);
-                var repAddressDiv2 = $("<p>").append(repAddress2);
-                var repInfoDiv = $("<div>").append(repNameDiv, repPartyDiv, repPhoneDiv, repAddressDiv, repNameDiv2, repPartyDiv2, repPhoneDiv2, repAddressDiv2);
+                if (response.officials[i + 1].address[0].line2) {
+                    var repAddressDiv2 = $("<p>").append(repAddress3);
+                } else {
+                    var repAddressDiv2 = $("<p>").append(repAddress4);
+                }
+                var repInfoDiv = $("<div>").append(repNameDiv, repPartyDiv, repPhoneDiv, repAddressDiv, "<br />", repNameDiv2, repPartyDiv2, repPhoneDiv2, repAddressDiv2);
                 //repDiv.append()
                 //var repName = $("<h3>").append(response.officials[i].name, "<br />", response.officials[i, 1].name);
                 repDiv.append(repDivTitle);
@@ -106,13 +123,17 @@ $(".btn").on("click", function (event) {
                 var repNameDiv = $("<p>").append(repName2);
                 var repPartyDiv = $("<p>").append(repParty2);
                 var repPhoneDiv = $("<p>").append(repPhone2);
-                var repAddressDiv = $("<p>").append(repAddress2);
+                if (response.officials[i + 1].address[0].line2) {
+                    var repAddressDiv = $("<p>").append(repAddress3);
+                } else {
+                    var repAddressDiv = $("<p>").append(repAddress4);
+                }
                 var repInfoDiv = $("<div>").append(repNameDiv, repPartyDiv, repPhoneDiv, repAddressDiv);
                 repDiv.append(repDivTitle);
-            repDiv.addClass("rep");
-            repInfoDiv.addClass("info");
-            repDiv.append(repInfoDiv);
-            $("#representatives").append(repDiv);
+                repDiv.addClass("rep");
+                repInfoDiv.addClass("info");
+                repDiv.append(repInfoDiv);
+                $("#representatives").append(repDiv);
             }
         }
 
