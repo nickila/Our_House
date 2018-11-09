@@ -1,6 +1,25 @@
-body{
-    background-color: rgb(106, 183, 247);
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: linear-gradient(rgb(82, 177, 255), rgb(122, 195, 255));
+    /* background-color: rgb(106, 183, 247); */
     color: white;
+}
+a {
+    
+    color: rgb(0, 121, 221);
+}
+
+
+a:hover {
+    text-decoration: none;
+    color: rgb(0, 140, 255);
+
 }
 
 .recall-button{
@@ -8,23 +27,68 @@ body{
     margin-bottom: 10px;
 }
 
+
 #poll-map {
     /* height: 400px; */
     width: 100%;
 }
-h1 {
+#title {
     font-size: 12rem;
     text-align: center;
+    margin-bottom: 50px;
 }
 
+#repHeading {
+    font-size: 5rem;
+    text-align: right;
+    
+   
+    padding-top: 0;
+    color: rgba(255, 255, 255, 0.7)
+}
+p:last-child {
+    margin-bottom: 40px !important;
+}
 .info {
-    font-size: 1.75em;
-    margin-bottom: 30px;
+    color: rgb(0, 69, 126);
+    display: none;
+    /* margin-bottom: 0; */
+    font-size: 24px;
+    line-height: 26px;
 }
 h3 {
-    color: darkblue;
-    margin-bottom: 0;
+    font-size: 2rem;
+    color: white;
 }
-.title {
-    font-size: 1em;
+.rep:last-child {
+    margin-bottom: 100px;
+}
+#message {
+    text-align: center;
+    font-size: 2rem;
+}
+.hide {
+    display: none;
+}
+.show {
+    display: inline;
+}
+
+.address-form {
+    background-color: rgb(57, 142, 211);
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.btn-danger {
+    background-color: #eb6572;
+    border-color: #eb6572;
+   
+}
+.center {
+    margin-right: auto;
+    margin-left: auto;
+}
+.highlight {
+    color: rgba(235,101,114, 0.7);
 }
