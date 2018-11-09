@@ -30,6 +30,7 @@ h3 {
 
 #message {
     text-align: center;
+    font-size: 2rem;
 }
 .hide {
     display: none;
