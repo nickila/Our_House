@@ -13,16 +13,18 @@ h1 {
 }
 p {
     margin-bottom: 0;
+    
 }
-
 .info {
-    font-size: 1em;
     color: darkblue;
     display: none;
+    /* margin-bottom: 0; */
+    font-size: 24px
 }
 h3 {
+    font-size: 2rem;
     color: white;
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
 }
 .repDiv {
     font-size: 1em;
@@ -33,6 +35,6 @@ h3 {
 .show {
     display: inline;
 }
-.rep {
+/* .rep {
     margin-bottom: 40px;
-}
+} */

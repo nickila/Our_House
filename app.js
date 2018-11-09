@@ -76,40 +76,34 @@ $(".btn").on("click", function (event) {
             if (i < 2) {
                 var repDiv = $('<div>');
                 var repDivTitle = $("<h3>").append(response.offices[i].name);
-                var repNameDiv = $("<p>").append(repName);
-                var repPartyDiv = $("<p>").append(repParty);
-                var repPhoneDiv = $("<p>").append(repPhone);
+                var repNameDiv = $("<p>").append(repName + " (" + repParty + ") &nbsp; " + repPhone);
                 var repAddressDiv = $("<p>").append(repAddress2);
-                var repInfoDiv = $("<div>").append(repNameDiv, repPartyDiv, repPhoneDiv, repAddressDiv);
-                //var repName = $("<h3>").append(response.officials[i].name);
+                var repInfoDiv = $("<div>").append(repNameDiv, repAddressDiv);
                 repDiv.append(repDivTitle);
                 repDiv.addClass("rep");
                 repInfoDiv.addClass("info");
-
-                // repInfoDiv.attr("data-state", "hide");
-                // repInfoDiv.addClass('hide');
                 repDiv.append(repInfoDiv);
                 $("#representatives").append(repDiv);
+
             } else if (i == 2) {
                 var repDiv = $('<div>');
                 var repDivTitle = $("<h3>").append(response.offices[i].name);
-                var repNameDiv = $("<p>").append(repName);
-                var repPartyDiv = $("<p>").append(repParty);
-                var repPhoneDiv = $("<p>").append(repPhone);
+                var repNameDiv = $("<p>").append(repName + " (" + repParty + ") &nbsp; " + repPhone);
+
                 if (response.officials[i].address[0].line2) {
                     var repAddressDiv = $("<p>").append(repAddress2);
                 } else {
                     var repAddressDiv = $("<p>").append(repAddress);
                 }
-                var repNameDiv2 = $("<p>").append(repName2);
-                var repPartyDiv2 = $("<p>").append(repParty2);
-                var repPhoneDiv2 = $("<p>").append(repPhone2);
+                var repNameDiv2 = $("<p>").append(repName2 + " (" + repParty2 + ") &nbsp; " + repPhone2);
+                // var repPartyDiv2 = $("<p>").append(repParty2);
+                // var repPhoneDiv2 = $("<p>").append(repPhone2);
                 if (response.officials[i + 1].address[0].line2) {
                     var repAddressDiv2 = $("<p>").append(repAddress3);
                 } else {
                     var repAddressDiv2 = $("<p>").append(repAddress4);
                 }
-                var repInfoDiv = $("<div>").append(repNameDiv, repPartyDiv, repPhoneDiv, repAddressDiv, "<br />", repNameDiv2, repPartyDiv2, repPhoneDiv2, repAddressDiv2);
+                var repInfoDiv = $("<div>").append(repNameDiv, repAddressDiv, "<br />", repNameDiv2, repAddressDiv2);
                 //repDiv.append()
                 //var repName = $("<h3>").append(response.officials[i].name, "<br />", response.officials[i, 1].name);
                 repDiv.append(repDivTitle);
@@ -120,15 +114,15 @@ $(".btn").on("click", function (event) {
             } else if (i > 2) {
                 var repDiv = $('<div>');
                 var repDivTitle = $("<h3>").append(response.offices[i].name);
-                var repNameDiv = $("<p>").append(repName2);
-                var repPartyDiv = $("<p>").append(repParty2);
-                var repPhoneDiv = $("<p>").append(repPhone2);
+                var repNameDiv = $("<p>").append(repName2 + " (" + repParty2 + ") &nbsp; " + repPhone2);
+                // var repPartyDiv = $("<p>").append(repParty2);
+                // var repPhoneDiv = $("<p>").append(repPhone2);
                 if (response.officials[i + 1].address[0].line2) {
                     var repAddressDiv = $("<p>").append(repAddress3);
                 } else {
                     var repAddressDiv = $("<p>").append(repAddress4);
                 }
-                var repInfoDiv = $("<div>").append(repNameDiv, repPartyDiv, repPhoneDiv, repAddressDiv);
+                var repInfoDiv = $("<div>").append(repNameDiv, repAddressDiv);
                 repDiv.append(repDivTitle);
                 repDiv.addClass("rep");
                 repInfoDiv.addClass("info");
