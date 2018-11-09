@@ -174,7 +174,7 @@ $(".btn").on("click", function (event) {
                 // var repAddressDiv = $("<p>").append(repAddress2);
                 var repInfoDiv = $("<div>").append(repNameDiv);
                 repDiv.append(repDivTitle);
-                repDiv.addClass("rep");
+                repDiv.addClass("rep animated bounceInUp");
                 repInfoDiv.addClass("info");
                 repDiv.append(repInfoDiv);
                 $("#representatives").append(repDiv);
@@ -201,7 +201,7 @@ $(".btn").on("click", function (event) {
                 //repDiv.append()
                 //var repName = $("<h3>").append(response.officials[i].name, "<br />", response.officials[i, 1].name);
                 repDiv.append(repDivTitle);
-                repDiv.addClass("rep");
+                repDiv.addClass("rep animated bounceInUp");
                 repInfoDiv.addClass("info");
                 repDiv.append(repInfoDiv);
                 $("#representatives").append(repDiv);
@@ -218,9 +218,10 @@ $(".btn").on("click", function (event) {
                 }
                 var repInfoDiv = $("<div>").append(repNameDiv);
                 repDiv.append(repDivTitle);
-                repDiv.addClass("rep");
+                repDiv.addClass("rep animated bounceInUp");
                 repInfoDiv.addClass("info");
                 repDiv.append(repInfoDiv);
+                
                 $("#representatives").append(repDiv);
             }
         }
@@ -228,8 +229,8 @@ $(".btn").on("click", function (event) {
 
         $(".rep").unbind();
         $(".rep").on("click", function () {
-            console.log($(this).children(".info"))
-            $(this).children(".info").toggleClass('show')
+            console.log($(this).children(".info"));
+            $(this).children(".info").toggleClass('show');
         });
 
 
