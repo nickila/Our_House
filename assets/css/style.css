@@ -16,15 +16,28 @@ h1 {
     font-size: 12rem;
     text-align: center;
 }
-
-.info {
-    font-size: 1.75em;
-    margin-bottom: 30px;
-}
-h3 {
-    color: darkblue;
+p {
     margin-bottom: 0;
 }
-.title {
+
+.info {
     font-size: 1em;
+    color: darkblue;
+    display: none;
+}
+h3 {
+    color: white;
+    margin-bottom: 0;
+}
+.repDiv {
+    font-size: 1em;
+}
+.hide {
+    display: none;
+}
+.show {
+    display: inline;
+}
+.rep {
+    margin-bottom: 40px;
 }

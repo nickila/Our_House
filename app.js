@@ -100,6 +100,7 @@ var buttonMaker = function(){
 $(".btn").on("click", function (event) {
 
     event.preventDefault();
+    $("#representatives").empty();
     var street = $("#street").val().trim();
     var city = $("#city").val().trim();
     var state = $("#state").val().trim();
@@ -141,29 +142,105 @@ $(".btn").on("click", function (event) {
         // var name = response.officials[0].name;
         // var party = response.officials[0].party;
         // var phone = response.officials[0].phones;
-
+        console.log(response);
+        //officials[0].address[0].city
         for (i = 0; i < response.offices.length; i++) {
-            var repDiv = $("<div>");
-            var repDivTitle = $("<h3>").append(response.offices[i].name);
-            
-            if (i < 2) {
-            var repInfoDiv = $("<p>").append(response.officials[i].name + ", " + response.officials[i].party + " " + response.officials[i].phones);
-            } else if (i == 2) {
-                var repInfoDiv = $("<p>").append(response.officials[i].name  + ", " + response.officials[i].party + " " + response.officials[i].phones + "<br />" + 
-                response.officials[i+1].name  + ", " + response.officials[i+1].party + " " + response.officials[i+1].phones);
-            } else {
-                var repInfoDiv = $("<p>").append(response.officials[i+1].name  + ", " + response.officials[i+1].party + " " + response.officials[i+1].phones);
-            }
-            repDiv.append(repDivTitle);
-            repDiv.addClass("title");
-            repInfoDiv.addClass("info");
-            repDiv.append(repInfoDiv);
-            $("#representatives").append(repDiv);
-            $("#representatives").addClass("animated bounceInDown");
-        }
-        //$("<h4>").on("click", this)
-       
 
+            var repName = response.officials[i].name;
+            var repParty = response.officials[i].party;
+            var repPhone = response.officials[i].phones;
+            var repAddress = ((response.officials[i].address[0].line1) + "<br />" +
+                (response.officials[i].address[0].city) + ", " +
+                (response.officials[i].address[0].state) + " &nbsp;" +
+                (response.officials[i].address[0].zip));
+            var repName2 = response.officials[i + 1].name;
+            var repParty2 = response.officials[i + 1].party;
+            var repPhone2 = response.officials[i + 1].phones;
+            var repAddress2 = ((response.officials[i].address[0].line1) + "<br />" +
+                (response.officials[i].address[0].line2) + "<br />" +
+                (response.officials[i].address[0].city) + ", " +
+                (response.officials[i].address[0].state) + " &nbsp;" +
+                (response.officials[i].address[0].zip));
+            var repAddress3 = ((response.officials[i + 1].address[0].line1) + "<br />" +
+                (response.officials[i + 1].address[0].line2) + "<br />" +
+                (response.officials[i + 1].address[0].city) + ", " +
+                (response.officials[i + 1].address[0].state) + " &nbsp;" +
+                (response.officials[i + 1].address[0].zip));
+            var repAddress4 = ((response.officials[i + 1].address[0].line1) + "<br />" +
+                (response.officials[i + 1].address[0].city) + ", " +
+                (response.officials[i + 1].address[0].state) + " &nbsp;" +
+                (response.officials[i + 1].address[0].zip));
+
+            if (i < 2) {
+                var repDiv = $('<div>');
+                var repDivTitle = $("<h3>").append(response.offices[i].name);
+                var repNameDiv = $("<p>").append(repName);
+                var repPartyDiv = $("<p>").append(repParty);
+                var repPhoneDiv = $("<p>").append(repPhone);
+                var repAddressDiv = $("<p>").append(repAddress2);
+                var repInfoDiv = $("<div>").append(repNameDiv, repPartyDiv, repPhoneDiv, repAddressDiv);
+                //var repName = $("<h3>").append(response.officials[i].name);
+                repDiv.append(repDivTitle);
+                repDiv.addClass("rep");
+                repInfoDiv.addClass("info");
+
+                // repInfoDiv.attr("data-state", "hide");
+                // repInfoDiv.addClass('hide');
+                repDiv.append(repInfoDiv);
+                $("#representatives").append(repDiv);
+            } else if (i == 2) {
+                var repDiv = $('<div>');
+                var repDivTitle = $("<h3>").append(response.offices[i].name);
+                var repNameDiv = $("<p>").append(repName);
+                var repPartyDiv = $("<p>").append(repParty);
+                var repPhoneDiv = $("<p>").append(repPhone);
+                if (response.officials[i].address[0].line2) {
+                    var repAddressDiv = $("<p>").append(repAddress2);
+                } else {
+                    var repAddressDiv = $("<p>").append(repAddress);
+                }
+                var repNameDiv2 = $("<p>").append(repName2);
+                var repPartyDiv2 = $("<p>").append(repParty2);
+                var repPhoneDiv2 = $("<p>").append(repPhone2);
+                if (response.officials[i + 1].address[0].line2) {
+                    var repAddressDiv2 = $("<p>").append(repAddress3);
+                } else {
+                    var repAddressDiv2 = $("<p>").append(repAddress4);
+                }
+                var repInfoDiv = $("<div>").append(repNameDiv, repPartyDiv, repPhoneDiv, repAddressDiv, "<br />", repNameDiv2, repPartyDiv2, repPhoneDiv2, repAddressDiv2);
+                //repDiv.append()
+                //var repName = $("<h3>").append(response.officials[i].name, "<br />", response.officials[i, 1].name);
+                repDiv.append(repDivTitle);
+                repDiv.addClass("rep");
+                repInfoDiv.addClass("info");
+                repDiv.append(repInfoDiv);
+                $("#representatives").append(repDiv);
+            } else if (i > 2) {
+                var repDiv = $('<div>');
+                var repDivTitle = $("<h3>").append(response.offices[i].name);
+                var repNameDiv = $("<p>").append(repName2);
+                var repPartyDiv = $("<p>").append(repParty2);
+                var repPhoneDiv = $("<p>").append(repPhone2);
+                if (response.officials[i + 1].address[0].line2) {
+                    var repAddressDiv = $("<p>").append(repAddress3);
+                } else {
+                    var repAddressDiv = $("<p>").append(repAddress4);
+                }
+                var repInfoDiv = $("<div>").append(repNameDiv, repPartyDiv, repPhoneDiv, repAddressDiv);
+                repDiv.append(repDivTitle);
+                repDiv.addClass("rep");
+                repInfoDiv.addClass("info");
+                repDiv.append(repInfoDiv);
+                $("#representatives").append(repDiv);
+            }
+        }
+
+
+        $(".rep").unbind();
+        $(".rep").on("click", function () {
+            console.log($(this).children(".info"))
+            $(this).children(".info").toggleClass('show')
+        });
 
         // var address = response.pollingLocations[0].address.state;
         // var email = response.pollingLocations[0].address.zip;
