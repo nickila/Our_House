@@ -27,69 +27,77 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>POLL SPOT</h1>
+                <h1>OUR HOUSE</h1>
             </div>
         </div>
-
+    </div>
+    <div class="container">
         <div class="row">
-            <!-- This is where the polling address will show up when called to do so. -->
+            <!-- This is where the representatives will show up when called to do so. -->
             <div class="col-8 reps" id="representatives">
             </div>
-        <form class="needs-validation" novalidate>
+            
+            <div class="col-4">
+                    <div class="container  address-form">
+                <h5 id="message">ENTER YOUR HOME ADDRESS BELOW</h5>
+                <form class="needs-validation" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-2">
 
-<div class="container">
-            <div class="form-row">
-                <div class="col-md-12 mb-2">
+                            <input type="text" class="form-control" id="street" placeholder="STREET ADDRESS" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid address.
+                            </div>
+                        </div>
+                    </div>
 
-                    <input type="text" class="form-control" id="street" placeholder="STREET ADDRESS" required>
-                    <div class="invalid-feedback">
-                        Please provide a valid address.
+                    <div class="form-row">
+                        <div class="col-md-12 mb-2">
+
+                            <input type="text" class="form-control" id="city" placeholder="CITY" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid city.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-2">
+
+                            <input type="text" class="form-control" id="state" placeholder="STATE" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid state.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-2">
+                            <input type="text" class="form-control" id="zip" placeholder="ZIP" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid zip.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <button class="btn btn-danger" type="submit">FIND YOUR REPRESENTATIVES</button>
+                        </div>
                     </div>
                 </div>
+                </form>
             </div>
-
-            <div class="form-row">
-                <div class="col-md-12 mb-2">
-
-                    <input type="text" class="form-control" id="city" placeholder="CITY" required>
-                    <div class="invalid-feedback">
-                        Please provide a valid city.
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-md-12 mb-2">
-
-                    <input type="text" class="form-control" id="state" placeholder="STATE" required>
-                    <div class="invalid-feedback">
-                        Please provide a valid state.
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-md-12 mb-2">
-                    <input type="text" class="form-control" id="zip" placeholder="ZIP" required>
-                    <div class="invalid-feedback">
-                        Please provide a valid zip.
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <button class="btn btn-primary" type="submit">SEARCH</button>
-            </div>
-        </form>
-    </div>
         </div>
-        <div class="row">
-            <div class="col-8" id="poll-map">
-                <!-- This is where the map to the polling address will show up when called to do so. -->
-            </div>
-        </div>
-        
+    </div>
+    <!-- <div class="row">
+        <div class="col-8" id="poll-map"> -->
+            <!-- This is where the map to the polling address will show up when called to do so. -->
+        <!-- </div>
+    </div> -->
+
 
     </div>
 
     </div>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script> -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSt2GC8tAx5o4zox7mVX7Kne_fTD3ekLA">
     </script>
     <!-- <script src="https://maps.googleapis.com/maps/api/geocode/json?address"></script> -->
