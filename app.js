@@ -143,6 +143,7 @@ $(".btn").on("click", function (event) {
             var repName = response.officials[i].name;
             var repParty = response.officials[i].party;
             var repPhone = response.officials[i].phones;
+            var repUrl = response.officials[i].urls;
             var repAddress = ((response.officials[i].address[0].line1) + "<br />" +
                 (response.officials[i].address[0].city) + ", " +
                 (response.officials[i].address[0].state) + " &nbsp;" +
@@ -150,6 +151,7 @@ $(".btn").on("click", function (event) {
             var repName2 = response.officials[i + 1].name;
             var repParty2 = response.officials[i + 1].party;
             var repPhone2 = response.officials[i + 1].phones;
+            var repUrl2 = response.officials[i + 1].urls;
             var repAddress2 = ((response.officials[i].address[0].line1) + "<br />" +
                 (response.officials[i].address[0].line2) + "<br />" +
                 (response.officials[i].address[0].city) + ", " +
@@ -168,7 +170,7 @@ $(".btn").on("click", function (event) {
             if (i < 2) {
                 var repDiv = $('<div>');
                 var repDivTitle = $("<h3>").append(response.offices[i].name);
-                var repNameDiv = $("<p>").append(repName + " (" + repParty + ")<br />" + "<span style='color:#e03748;'>" + repPhone + "</span>" + "<br />" + repAddress2);
+                var repNameDiv = $("<p>").append(repName + " (" + repParty + ")<br />" + "<span style='color:#e03748;'>" + repPhone + "</span>" + "<br />" + repAddress2 + "<br />" + "<a href='" + repUrl + "' target='_blank'>" + repUrl + "</a>");
                 // var repAddressDiv = $("<p>").append(repAddress2);
                 var repInfoDiv = $("<div>").append(repNameDiv);
                 repDiv.append(repDivTitle);
@@ -183,17 +185,17 @@ $(".btn").on("click", function (event) {
                 // var repNameDiv = $("<p>").append(repName + " (" + repParty + ") &nbsp; " + repPhone);
                 
                 if (response.officials[i].address[0].line2) {
-                    var repNameDiv = $("<p>").append(repName + " (" + repParty + ")<br />" + "<span style='color:#e03748;'>" + repPhone + "</span>" + "<br />" + repAddress2);
+                    var repNameDiv = $("<p>").append(repName + " (" + repParty + ")<br />" + "<span style='color:#e03748;'>" + repPhone + "</span>" + "<br />" + repAddress2 + "<br />" + "<a href='" + repUrl + "' target='_blank'>" + repUrl + "</a>");
                 } else {
-                    var repNameDiv = $("<p>").append(repName + " (" + repParty + ")<br />" + "<span style='color:#e03748;'>" + repPhone + "</span>" + "<br />" + repAddress);
+                    var repNameDiv = $("<p>").append(repName + " (" + repParty + ")<br />" + "<span style='color:#e03748;'>" + repPhone + "</span>" + "<br />" + repAddress + "<br />" + "<a href='" + repUrl + "' target='_blank'>" + repUrl + "</a>");
                 }
                 // var repNameDiv2 = $("<p>").append(repName2 + " (" + repParty2 + ") &nbsp; " + repPhone2);
                 // var repPartyDiv2 = $("<p>").append(repParty2);
                 // var repPhoneDiv2 = $("<p>").append(repPhone2);
                 if (response.officials[i + 1].address[0].line2) {
-                    var repNameDiv2 = $("<p>").append(repName2 + " (" + repParty + ")<br />" + "<span style='color:#e03748;'>" + repPhone + "</span>" + "<br />" + repAddress3);
+                    var repNameDiv2 = $("<p>").append(repName2 + " (" + repParty + ")<br />" + "<span style='color:#e03748;'>" + repPhone2 + "</span>" + "<br />" + repAddress3 + "<br />" + "<a href='" + repUrl2 + "' target='_blank'>" + repUrl2 + "</a>");
                 } else {
-                    var repNameDiv2 = $("<p>").append(repName2 + " (" + repParty + ")<br />" + "<span style='color:#e03748;'>" + repPhone + "</span>" + "<br />" + repAddress4);
+                    var repNameDiv2 = $("<p>").append(repName2 + " (" + repParty + ")<br />" + "<span style='color:#e03748;'>" + repPhone2 + "</span>" + "<br />" + repAddress4 + "<br />" + "<a href='" + repUrl2 + "' target='_blank'>" + repUrl2 + "</a>");
                 }
                 var repInfoDiv = $("<div>").append(repNameDiv, "<br />", repNameDiv2);
                 //repDiv.append()
@@ -210,9 +212,9 @@ $(".btn").on("click", function (event) {
                 // var repPartyDiv = $("<p>").append(repParty2);
                 // var repPhoneDiv = $("<p>").append(repPhone2);
                 if (response.officials[i + 1].address[0].line2) {
-                    var repNameDiv = $("<p>").append(repName2 + " (" + repParty + ")<br />" + "<span style='color:#e03748;'>" + repPhone + "</span>" + "<br />" + repAddress3);
+                    var repNameDiv = $("<p>").append(repName2 + " (" + repParty2 + ")<br />" + "<span style='color:#e03748;'>" + repPhone2 + "</span>" + "<br />" + repAddress3 + "<br />" + "<a href='" + repUrl2 + "' target='_blank'>" + repUrl2 + "</a>");
                 } else {
-                    var repNameDiv = $("<p>").append(repName2 + " (" + repParty + ")<br />" + "<span style='color:#e03748;'>" + repPhone + "</span>" + "<br />" + repAddress4);
+                    var repNameDiv = $("<p>").append(repName2 + " (" + repParty2 + ")<br />" + "<span style='color:#e03748;'>" + repPhone2 + "</span>" + "<br />" + repAddress4 + "<br />" + "<a href='" + repUrl2 + "' target='_blank'>" + repUrl2 + "</a>");
                 }
                 var repInfoDiv = $("<div>").append(repNameDiv);
                 repDiv.append(repDivTitle);

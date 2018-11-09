@@ -10,7 +10,16 @@ body {
     /* background-color: rgb(106, 183, 247); */
     color: white;
 }
+a {
+    
+    color: rgb(0, 121, 221);
+}
 
+a:hover {
+    text-decoration: none;
+    color: rgb(0, 140, 255);
+
+}
 #poll-map {
     /* height: 400px; */
     width: 100%;
@@ -24,8 +33,8 @@ body {
 #repHeading {
     font-size: 5rem;
     text-align: right;
-    line-height: 125px;
-    margin-top: -25px;
+    
+   
     padding-top: 0;
     color: rgba(255, 255, 255, 0.5)
 }
@@ -33,7 +42,7 @@ p:last-child {
     margin-bottom: 40px !important;
 }
 .info {
-    color: rgb(7, 90, 158);
+    color: rgb(0, 69, 126);
     display: none;
     /* margin-bottom: 0; */
     font-size: 24px;
