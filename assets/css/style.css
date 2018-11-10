@@ -54,8 +54,10 @@ h3 {
     color: white;
 }
 
+
 h3:hover {
     cursor: pointer;
+    color: #eb6572;
 }
 
 .rep:last-child {
@@ -79,7 +81,6 @@ h3:hover {
     background-color: rgb(57, 142, 211);
     border-radius: 5px;
     padding: 15px;
-    margin-bottom: 20px;
 }
 
 .btn-danger {
@@ -99,4 +100,16 @@ h3:hover {
 .blue {
     color: rgb(20, 103, 172);
     font-size: 2.2rem;
+}
+#map{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.repAddress{
+    color: rgb(0, 69, 126);
+}
+.repAddress:hover{
+    color: white;
+    cursor: pointer;
 }
