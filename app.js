@@ -85,20 +85,24 @@ var arrayizer = function(address){
 var buttonMaker = function(){
     var buttonDiv = document.createElement('div');
     $(buttonDiv).attr('id', 'buttonDiv');
-    $(buttonDiv).attr('class', 'container animated bounceInRight address-form')
-    $(buttonDiv).html('<h4>Past Searches:</h4>')
-    $('#searchDiv').append(buttonDiv)
+    $(buttonDiv).attr('class', 'container animated bounceInRight address-form');
+    $(buttonDiv).html('<h4>Past Searches:</h4>');
+    $('#searchDiv').append(buttonDiv);
+
     for( var i = 0; i <= counter; i++){
-        var button = document.createElement('button');
-        var lineBreak = '<br>'
-        var db = database.ref('/' + userId + '/addresses').child(i);
-        db.on('value', function(snap){
-            var adrText = snap.val()
-            $(button).text(adrText);
-            $(button).attr('class', 'recall-button btn btn-sm btn-outline-light');
-            $(button).appendTo(buttonDiv);
-            $(lineBreak).appendTo(buttonDiv)
-        })
+        function buttonizer(){
+            var button = document.createElement('button');
+            // var lineBreak = '<br>'
+            var db = database.ref('/' + userId + '/addresses').child(i);
+            db.on('value', function(snap){
+                var adrText = snap.val();
+                $(button).text(adrText);
+                $(button).attr('class', 'recall-button btn btn-sm btn-outline-light');
+                $(button).appendTo(buttonDiv);
+                // $(lineBreak).appendTo(buttonDiv)
+            })
+        };
+        buttonizer();
     }
 
 };
