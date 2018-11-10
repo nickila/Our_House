@@ -89,10 +89,10 @@ var buttonMaker = function(){
                 $(button).attr('class', 'recall-button btn btn-sm btn-outline-light');
                 $(button).appendTo(buttonDiv);
                 // $(lineBreak).appendTo(buttonDiv)
-            })
+            });
         };
         buttonizer();
-    }
+    };
 
 };
 
@@ -210,13 +210,9 @@ $(".btn").on("click", function (event) {
         });
     });
 
-});
-
-
-
-
 
 });
+
 $(document).on('click', '.recall-button', function(event){
     event.preventDefault();
     $('#representatives').empty();
