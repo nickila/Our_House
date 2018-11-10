@@ -100,3 +100,7 @@ h3:hover {
     color: rgb(20, 103, 172);
     font-size: 2.2rem;
 }
+#map{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
