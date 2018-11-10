@@ -216,6 +216,7 @@ $(".btn").on("click", function (event) {
 $(document).on('click', '.recall-button', function(event){
     event.preventDefault();
     $('#representatives').empty();
+    $("#representatives").append("<h4 class='blue animated bounceInUp'>Select an office:</h4>");
     var address = $(this).text();
 
     var civicAPI = 'https://www.googleapis.com/civicinfo/v2/representatives?address=' + address + '&key=' + key;
