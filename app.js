@@ -111,6 +111,7 @@ $(".btn").on("click", function (event) {
     $("#city").val("");
     $("#state").val("");
     $("#zip").val("");
+    $("#representatives").append("<h4 class='blue animated bounceInUp'>Select an office:</h4>");
     // function initMap(address) {
 
     //     // The map, centered at address
@@ -145,7 +146,7 @@ $(".btn").on("click", function (event) {
             var repPhone = response.officials[i].phones;
             var repUrl = response.officials[i].urls;
             var repAddress = ((response.officials[i].address[0].line1) + "<br />" +
-                (response.officials[i].address[0].city) + ", " +
+                (response.officials[i].address[0].city) + " " +
                 (response.officials[i].address[0].state) + " &nbsp;" +
                 (response.officials[i].address[0].zip));
             var repName2 = response.officials[i + 1].name;
@@ -154,16 +155,16 @@ $(".btn").on("click", function (event) {
             var repUrl2 = response.officials[i + 1].urls;
             var repAddress2 = ((response.officials[i].address[0].line1) + "<br />" +
                 (response.officials[i].address[0].line2) + "<br />" +
-                (response.officials[i].address[0].city) + ", " +
+                (response.officials[i].address[0].city) + " " +
                 (response.officials[i].address[0].state) + " &nbsp;" +
                 (response.officials[i].address[0].zip));
             var repAddress3 = ((response.officials[i + 1].address[0].line1) + "<br />" +
                 (response.officials[i + 1].address[0].line2) + "<br />" +
-                (response.officials[i + 1].address[0].city) + ", " +
+                (response.officials[i + 1].address[0].city) + " " +
                 (response.officials[i + 1].address[0].state) + " &nbsp;" +
                 (response.officials[i + 1].address[0].zip));
             var repAddress4 = ((response.officials[i + 1].address[0].line1) + "<br />" +
-                (response.officials[i + 1].address[0].city) + ", " +
+                (response.officials[i + 1].address[0].city) + " " +
                 (response.officials[i + 1].address[0].state) + " &nbsp;" +
                 (response.officials[i + 1].address[0].zip));
 
@@ -227,12 +228,11 @@ $(".btn").on("click", function (event) {
         }
 
 
-        $(".rep").unbind();
-        $(".rep").on("click", function () {
+        $("h3").unbind();
+        $("h3").on("click", function () {
             console.log($(this).children(".info"));
-            $(this).children(".info").toggleClass('show');
+            $(this).parent().children(".info").toggleClass('show');
         });
-
 
 
         // var address = response.pollingLocations[0].address.state;

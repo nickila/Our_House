@@ -1,13 +1,17 @@
 html {
     height: 100%;
+    
+    
 }
 body {
+    background-image: url("../images/our-house.png");
     height: 100%;
     margin: 0;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-image: linear-gradient(rgb(82, 177, 255), rgb(122, 195, 255));
+    background-color: rgb(133, 200, 255);
+   
     /* background-color: rgb(106, 183, 247); */
+    /* , linear-gradient(rgb(82, 177, 255), rgb(122, 195, 255)); */
     color: white;
 }
 a {
@@ -33,10 +37,8 @@ a:hover {
 #repHeading {
     font-size: 5rem;
     text-align: right;
-    
-   
     padding-top: 0;
-    color: rgba(255, 255, 255, 0.7)
+    color: rgb(255, 255, 255)
 }
 p:last-child {
     margin-bottom: 40px !important;
@@ -51,6 +53,9 @@ p:last-child {
 h3 {
     font-size: 2rem;
     color: white;
+}
+h3:hover {
+    cursor: pointer;
 }
 .rep:last-child {
     margin-bottom: 100px;
@@ -81,5 +86,9 @@ h3 {
     margin-left: auto;
 }
 .highlight {
-    color: rgba(235,101,114, 0.7);
+    color: rgb(235,101,114);
+}
+.blue {
+    color: rgb(20, 103, 172);
+    font-size: 2.2rem;
 }
