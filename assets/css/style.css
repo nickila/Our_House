@@ -12,7 +12,7 @@ body {
 }
 
 a {    
-    color: rgb(0, 121, 221);
+    color: rgb(0, 106, 192);
 }
 
 a:hover {
@@ -57,8 +57,10 @@ h3:hover{
     color: red;
 }
 
+
 h3:hover {
     cursor: pointer;
+    color: #eb6572;
 }
 
 .rep:last-child {
@@ -82,7 +84,6 @@ h3:hover {
     background-color: rgb(57, 142, 211);
     border-radius: 5px;
     padding: 15px;
-    margin-bottom: 20px;
 }
 
 .btn-danger {
@@ -107,10 +108,13 @@ h3:hover {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+
 .repAddress{
-    color: darkblue;
+    color: rgb(0, 69, 126);
 }
 .repAddress:hover{
-    color: white;
+    color: rgb(0, 140, 255);
     cursor: pointer;
 }
+
