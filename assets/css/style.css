@@ -12,7 +12,7 @@ body {
 }
 
 a {    
-    color: rgb(0, 121, 221);
+    color: rgb(0, 106, 192);
 }
 
 a:hover {
@@ -110,6 +110,6 @@ h3:hover {
     color: rgb(0, 69, 126);
 }
 .repAddress:hover{
-    color: white;
+    color: rgb(0, 140, 255);
     cursor: pointer;
 }
