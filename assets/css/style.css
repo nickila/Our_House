@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background-image: url("../images/our-house.png");
+    background-image: url("../Images/our-house.png");
     height: 100%;
     margin: 0;
     background-repeat: no-repeat;
@@ -52,6 +52,9 @@ p:last-child {
 h3 {
     font-size: 2rem;
     color: white;
+}
+h3:hover{
+    color: red;
 }
 
 
@@ -106,6 +109,7 @@ h3:hover {
     margin-bottom: 20px;
 }
 
+
 .repAddress{
     color: rgb(0, 69, 126);
 }
@@ -113,3 +117,4 @@ h3:hover {
     color: rgb(0, 140, 255);
     cursor: pointer;
 }
+
