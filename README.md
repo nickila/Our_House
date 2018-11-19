@@ -10,6 +10,8 @@ We hoped to create a website that was clean, bright and fun to use.
 We wanted to provide a place that might encourage people to become more politically active. 
 Because when people are informed and people speak loud enough their representatives will listen.
 
+https://nickila.github.io/Project_1/
+
 OUR HOUSE was created by:
 
 Mark SperleWeiler - Google Maps API
